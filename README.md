@@ -9,6 +9,7 @@ On the front-end, I have utilized
 On the back-end, I have used
 + Node Js (Express Js)
 + MySQL
+>During development i also used Postman to test the API
 ## Getting Started
 1. Open a new terminal
 2. type `cd backend` and `npm start`
