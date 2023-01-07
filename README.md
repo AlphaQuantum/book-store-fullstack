@@ -17,3 +17,6 @@ On the back-end, I have used
 4. The database depends on you, it's a simple MySQL db
 > + Create a Schema called book_db (or call it what you want and change it later)
 > + Add 5 columns called `id` `title` `desc` `cover` `price`
+## Future
+- [ ] Use a CSS framework (probably tailwind)
+- [ ] Add authentication
