@@ -5,8 +5,9 @@
 body{    
     margin: 0px;
     padding: 0px;
+    min-height: 100vh;
 }
 img{
-    width: 200px;
-    height: 200px;
+    width: 224px;
+    height: 270px;
 }
