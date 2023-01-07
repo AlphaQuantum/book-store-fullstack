@@ -39,6 +39,34 @@ app.post("/books", (req, res) => {
     })
 })
 
+app.delete("/books/:id", (req, res) => {
+    const bookId = req.params.id;
+    const q = "DELETE FROM book WHERE id = ?";
+
+    db.query(q, bookId, (err, data) => {
+        if (err) return res.json(err)
+        return res.json("Book was succesfully deleted!")
+    })
+})
+
+app.put("/books/:id", (req, res) => {
+    const q = "UPDATE book SET `title` = ?,`desc` = ?, `cover` = ?, `price` = ? WHERE id = ?";
+    const bookId = req.params.id;
+    const values =
+        [
+            req.body.title,
+            req.body.desc,
+            req.body.cover,
+            req.body.price
+        ];
+
+    db.query(q, [...values, bookId], (err, data) => {
+        if (err) return res.json(err)
+        return res.json("Book was succesfully updated!")
+    })
+})
+
+
 app.listen(8888, () => {
     console.log("Connection Established at http://localhost:8888/")
 })
