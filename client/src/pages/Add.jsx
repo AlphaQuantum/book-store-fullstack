@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 export default function Add() {
     const [book, setBook] = useState({
         title: "",
-        price: null,
+        price: 0.0,
         desc: "",
         cover: ""
     });
@@ -32,13 +32,13 @@ export default function Add() {
 
     return (
         <div className="w-full sm:w-2/4 mx-auto m-2">
-            <h1 className='text-3xl text-center antialiased font-bold leading-normal'>Add New Book</h1>
+            <h1 className='text-3xl text-center antialiased font-bold leading-normal'>Update Book</h1>
             <div className="flex flex-col p-1">
                 <input className='p-1 my-2 border shadow' type="text" onChange={handleChange} placeholder='title' name='title' />
-                <input className='p-1 my-2 border shadow' type="text" onChange={handleChange} placeholder='desc' name='desc' />
+                <textarea className='p-1 my-2 border shadow' type="text" onChange={handleChange} placeholder='description' name='desc' />
                 <input className='p-1 my-2 border shadow' type="text" onChange={handleChange} placeholder='cover' name='cover' />
-                <input className='p-1 my-2 border shadow' type="number" onChange={handleChange} placeholder='price' name='price' />
-                <button className='p-1 shadow bg-cyan-600 text-cyan-100' onClick={handleClick}>Add Book</button>
+                <input className='p-1 my-2 border shadow' type="number" onChange={handleChange} placeholder='0.00' name='price' />
+                <button className='p-1 shadow bg-cyan-600 text-cyan-100' onClick={handleClick}>Update Book</button>
             </div>
         </div>
     )
