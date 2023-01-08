@@ -24,6 +24,15 @@ app.get("/books", (req, res) => {
     })
 })
 
+app.get("/books/:id", (req, res) => {
+    const q = "SELECT * FROM book WHERE id = ?";
+    const bookId = req.params.id;
+    db.query(q, bookId, (err, data) => {
+        if (err) return res.json(err)
+        return res.json(data)
+    })
+})
+
 app.post("/books", (req, res) => {
     const q = "INSERT INTO book (`title`,`desc`,`cover`,`price`) VALUES (?)";
     const values =
