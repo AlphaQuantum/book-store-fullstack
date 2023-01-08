@@ -42,12 +42,16 @@ export default function Books() {
                     {books.map(book => (
                         <div className="font-mono drop-shadow-lg w-56 shadow-lg border border-slate-400 col-span-12 sm:col-span-6 md:col-span-4 lg:col-span-3" key={book.id}>
                             {//If the book.cover is truthy then renders this, if not then doesnt render the img
-                                book.cover && <img src={book.cover} alt="Error" />
+                                book.cover && 
+                                <div className='group'>
+                                    <div className="absolute top-4 left-0 w-32 flex flex-col scale-0 group-hover:scale-100">
+                                        <button onClick={() => handleDelete(book.id)} className="shadow-red-600 rounded-r-lg p-1 pl-0 shadow bg-red-600 text-white">Delete</button>
+                                        <button className="shadow-cyan-600 rounded-r-lg mt-1 p-1 shadow bg-cyan-600 text-white"><Link to={`/update/${book.id}`} >Update</Link></button>
+                                    </div>
+                                    <img src={book.cover} alt="Error" />
+                                </div>
                             }
-                            <div className="absolute top-4 left-0 w-32 flex flex-col">
-                                <button onClick={() => handleDelete(book.id)} className="shadow-red-600 rounded-r-lg p-1 pl-0 shadow bg-red-600 text-white">Delete</button>
-                                <button className="shadow-cyan-600 rounded-r-lg mt-1 p-1 shadow bg-cyan-600 text-white"><Link to={`/update/${book.id}`} >Update</Link></button>
-                            </div>
+
                             <div className="p-2 flex flex-col text-center">
                                 <h2 className='font-bold  text-lg '>{book.title}</h2>
                                 <p className='text-justify truncate'>{book.desc}</p>
