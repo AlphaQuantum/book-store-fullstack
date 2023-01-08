@@ -32,20 +32,20 @@ export default function Books() {
         <>
             <div className="pt-14 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 items-stretch mx-4 justify-items-stretch gap-4">
                 {books.map(book => (
-                    <div className="drop-shadow-lg w-100 shadow-xl border rounded-lg bg-white" key={book.id}>
+                    <div className="drop-shadow-lg w-100 shadow-xl border rounded-lg bg-yellow-50" key={book.id}>
                         <div className="p-2 flex flex-col text-center">
-                            <h2 className='font-bold text-xl '>{book.title}</h2>
+                            <h2 className='font-bold text-xl mt-2'>{book.title}</h2>
                             {//If the book.cover is truthy then renders this, if not then doesnt render the img
                                 book.cover &&
                                 <div className='group flex justify-center'>
-                                    <div className="transition ease-in-out absolute top-10 left-0 w-32 flex flex-col origin-left scale-x-0 group-hover:scale-100">
-                                        <button onClick={() => handleDelete(book.id)} className="shadow-red-600 rounded-r-lg p-1 pl-0 shadow bg-red-600 text-white">Delete</button>
-                                        <button className="shadow-cyan-600 rounded-r-lg mt-1 p-1 shadow bg-cyan-600 text-white"><Link to={`/update/${book.id}`} >Update</Link></button>
+                                    <div className="transition ease-in-out absolute top-10 z-20 left-0 w-32 flex flex-col origin-left scale-x-0 group-hover:scale-100">
+                                        <button onClick={() => handleDelete(book.id)} className="border border-black/20 rounded-r-lg p-1 pl-0 shadow bg-orange-800 text-white">Delete</button>
+                                        <button className="border border-black/20 rounded-r-lg mt-1 p-1 shadow bg-yellow-700 text-white"><Link to={`/update/${book.id}`} >Update</Link></button>
                                     </div>
-                                    <img className="m-4" src={book.cover} alt="Error" />
+                                    <img className="m-4 drop-shadow-book border border-black/20" src={book.cover} alt="Error" />
                                 </div>
                             }
-                            <p className='text-center line-clamp-3 px-4'>{book.desc}</p>
+                            <p className='text-justify line-clamp-3 px-8 my-2'>{book.desc}</p>
                             <span className='text-red-800'>{book.price}$</span>
                         </div>
                     </div>

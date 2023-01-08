@@ -6,10 +6,11 @@ import { useNavigate, useLocation } from 'react-router-dom';
 export default function Update() {
   const [book, setBook] = useState({
     title: "",
-    price: 0,
+    price: 0.0,
     desc: "",
     cover: ""
   });
+  const [count, setCount] = useState(0);
 
   const navigate = useNavigate();
   //to get the book id (from the path)
@@ -27,6 +28,7 @@ export default function Update() {
           desc: newBook.desc,
           cover: newBook.cover
         });
+        setCount(newBook.desc.length);
 
       } catch (err) {
         console.log(err)
@@ -39,9 +41,10 @@ export default function Update() {
   //handle input change
   const handleChange = (e) => {
     const { name, value } = e.target;
+    setCount(value.length);
     setBook((prev) => ({ ...prev, [name]: value }));
   }
-  
+
 
   //handle click, more like send data to the database
   const handleClick = async e => {
@@ -58,14 +61,16 @@ export default function Update() {
   }
 
   return (
-    <div className="w-full sm:w-2/4 mx-auto m-2">
-      <h1 className='text-3xl text-center antialiased font-bold leading-normal'>Update Book</h1>
+    <div className="pt-14 w-full sm:w-2/4 mx-auto m-2">
       <div className="flex flex-col p-1">
         <input className='p-1 my-2 border shadow' type="text" onChange={handleChange} value={book.title} placeholder='title' name='title' />
         <textarea className='p-1 my-2 border shadow' type="text" onChange={handleChange} value={book.desc} placeholder='desc' name='desc' />
+        {count > 1848 ? 
+        <div className='text-red-700'><span className='float-right'>{count}/2048</span></div> : <div className='text-yellow-900'><span className='float-right'>{count}/2048</span></div>
+        }
         <input className='p-1 my-2 border shadow' type="text" onChange={handleChange} value={book.cover} placeholder='cover' name='cover' />
         <input className='p-1 my-2 border shadow' type="number" onChange={handleChange} value={book.price} placeholder='price' name='price' />
-        <button className='p-1 shadow bg-cyan-600 text-cyan-100' onClick={handleClick}>Update Book</button>
+        <button className='p-1 shadow bg-yellow-700 text-white' onClick={handleClick}>Update Book</button>
       </div>
     </div>
   )
