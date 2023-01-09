@@ -18,5 +18,5 @@ On the back-end, I have used
 > + Create a Schema called book_db (or call it what you want and change it later)
 > + Add 5 columns called `id` `title` `desc` `cover` `price`
 ## Future
-- [ ] Use a CSS framework (probably tailwind)
+- [X] Use a CSS framework (Tailwind)
 - [ ] Add authentication
